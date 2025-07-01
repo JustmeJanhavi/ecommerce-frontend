@@ -18,8 +18,8 @@ const StoreLandingPage = () => {
   
   useEffect(() => {
     // Fetch store info and bestsellers in parallel
-    const fetchStoreData = axios.get(`http://localhost:5000/api/store/${storeId}`);
-    const fetchBestsellers = axios.get(`http://localhost:5000/api/store/${storeId}/bestsellers`);
+    const fetchStoreData = axios.get(`${process.env.REACT_APP_API_URL}/store/${storeId}`);
+    const fetchBestsellers = axios.get(`${process.env.REACT_APP_API_URL}/store/${storeId}/bestsellers`);
   
     Promise.all([fetchStoreData, fetchBestsellers])
       .then(([storeRes, bestsellersRes]) => {
@@ -43,7 +43,7 @@ const StoreLandingPage = () => {
         review_text: reviewText
       };
   
-      await axios.post('http://localhost:5000/api/store/reviews', payload);
+      await axios.post(`${process.env.REACT_APP_API_URL}/store/reviews`, payload);
   
       // Clear state
       setShowReviewModal(false);
@@ -51,7 +51,7 @@ const StoreLandingPage = () => {
       setReviewText('');
   
       // Refresh reviews list
-      const updated = await axios.get(`http://localhost:5000/api/store/${storeId}`);
+      const updated = await axios.get(`${process.env.REACT_APP_API_URL}/store/${storeId}`);
       setReviews(updated.data.reviews);
   
     } catch (err) {
@@ -94,7 +94,7 @@ const visibleBestsellers = bestsellers.slice(currentSlide, currentSlide + visibl
       <div
         className="store-landing-page"
         style={{
-          backgroundImage: `url(http://localhost:5000/${landing_image})`
+          backgroundImage: `url(${process.env.REACT_APP_STATIC_URL}/${landing_image})`
         }}
       >
         
@@ -139,7 +139,7 @@ const visibleBestsellers = bestsellers.slice(currentSlide, currentSlide + visibl
         {visibleBestsellers.map(product => (
           <div key={product.product_id} className="bestseller-card">
             <img
-              src={`http://localhost:5000/${product.image_url}`}
+              src={`${process.env.REACT_APP_STATIC_URL}/${product.image_url}`}
               alt={product.product_name}
               className="bestseller-image"
             />
@@ -247,7 +247,7 @@ const visibleBestsellers = bestsellers.slice(currentSlide, currentSlide + visibl
         </div>
 
         <div className="footer-right">
-          <img src={`http://localhost:5000/${store_photo}`} alt="Store" className="footer-image" />
+          <img src={`${process.env.REACT_APP_STATIC_URL}/${store_photo}`} alt="Store" className="footer-image" />
           <div className="footer-address">
             <p>{store_address}</p>
             <p>{store_email}</p>

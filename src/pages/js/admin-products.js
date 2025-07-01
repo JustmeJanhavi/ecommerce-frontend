@@ -32,7 +32,7 @@ const Products = () => {
   }, []);
 
   const fetchProducts = async (token) => {
-    const res = await axios.get('http://localhost:5000/api/products', {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/products`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setProducts(res.data);
@@ -51,7 +51,7 @@ const Products = () => {
         maxSold: filters.maxSold,
       };
 
-      const res = await axios.get('http://localhost:5000/api/products/filter', {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/products/filter`, {
         headers: { Authorization: `Bearer ${token}` },
         params
       });
@@ -64,7 +64,7 @@ const Products = () => {
   };
 
   const fetchCategories = async (token) => {
-    const res = await axios.get('http://localhost:5000/api/products/category-counts', {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/products/category-counts`, {
       headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -148,7 +148,7 @@ const Products = () => {
           {filteredProducts.map(product => (
             <div className="product-card-admin" key={product.product_id}>
               <img
-                src={`http://localhost:5000/${product.image_url}`}
+                src={`${process.env.REACT_APP_STATIC_URL}/${product.image_url}`}
                 alt={product.product_name}
                 onError={(e) => (e.target.src = '/placeholder.png')}
               />

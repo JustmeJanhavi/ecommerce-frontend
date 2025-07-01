@@ -14,14 +14,14 @@ const CartPage = () => {
   // ✅ Extract to reusable function
   const fetchCartItems = () => {
     axios
-      .get(`http://localhost:5000/api/carts/${storeId}/${customerId}/items`)
+      .get(`${process.env.REACT_APP_API_URL}/carts/${storeId}/${customerId}/items`)
       .then((response) => setCartItems(response.data))
       .catch((err) => console.error('Error fetching cart:', err));
   };
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/store/${storeId}`)
+      .get(`${process.env.REACT_APP_API_URL}/store/${storeId}`)
       .then((response) => setStoreName(response.data.store.store_name))
       .catch((error) => console.error('Error fetching store:', error));
 
@@ -37,7 +37,7 @@ const CartPage = () => {
     if (newQuantity < 1) return;
 
     try {
-      await fetch(`http://localhost:5000/api/cart-items/${itemId}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/cart-items/${itemId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ quantity: newQuantity }),
@@ -50,7 +50,7 @@ const CartPage = () => {
 
   const removeItem = async (itemId) => {
     try {
-      await fetch(`http://localhost:5000/api/cart-items/${itemId}`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/cart-items/${itemId}`, {
         method: 'DELETE',
       });
       fetchCartItems(); // ✅ Refresh after removal
@@ -72,7 +72,7 @@ const CartPage = () => {
         })),
       };
 
-      await axios.post('http://localhost:5000/api/cart/orders', orderPayload);
+      await axios.post(`${process.env.REACT_APP_API_URL}/cart/orders`, orderPayload);
       setShowDialog(true);
       setCartItems([]); // clear UI cart
     } catch (err) {
@@ -102,7 +102,7 @@ const CartPage = () => {
     <div className="cart-items">
       {cartItems.map((item) => (
         <div className="cart-item" key={item.item_id}>
-          <img src={`http://localhost:5000/${item.image_url}`} alt={item.name} />
+          <img src={`${process.env.REACT_APP_STATIC_URL}/${item.image_url}`} alt={item.name} />
           <div className="item-info">
             <p>{item.name}</p>
             <p>Price: ₹{Number(item.price).toFixed(2)}</p>

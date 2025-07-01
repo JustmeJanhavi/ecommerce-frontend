@@ -13,13 +13,13 @@ const StoreHeader = ({ storeId }) => {
     if (!storeId) return;
 
     // Fetch store name
-    axios.get(`http://localhost:5000/api/store/${storeId}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/store/${storeId}`)
       .then(response => {
         setStoreName(response.data.store.store_name);
       })
       .catch(error => console.error('Error fetching store:', error));
       if (customerId) {
-    axios.get(`http://localhost:5000/api/carts/${storeId}/${customerId}/items`)
+    axios.get(`${process.env.REACT_APP_API_URL}/carts/${storeId}/${customerId}/items`)
       .then(response => {
         setCartCount(response.data.length);
       })

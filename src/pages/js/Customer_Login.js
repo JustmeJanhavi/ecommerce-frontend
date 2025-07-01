@@ -25,7 +25,7 @@ function Customer_Login() {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/customer/auth/login', {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/customer/auth/login`, {
         email: cusEmail,
         password: cusPassword,
         store_id: storeId // ✅ Send store_id to backend

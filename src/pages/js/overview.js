@@ -33,7 +33,7 @@ const Overview = () => {
           return;
         }
 
-        const res = await axios.get(`http://localhost:5000/api/stats/overview/${storeId}`);
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/stats/overview/${storeId}`);
         setData(res.data);
       } catch (err) {
         console.error('Error fetching overview:', err);

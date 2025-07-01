@@ -11,7 +11,7 @@ const CustomerOrders = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/customer/${customerId}/store/${storeId}/orders`)
+      .get(`${process.env.REACT_APP_API_URL}/customer/${customerId}/store/${storeId}/orders`)
       .then((res) => setOrders(res.data))
       .catch((err) => console.error('Error fetching orders:', err));
   }, [storeId, customerId]);
@@ -34,7 +34,7 @@ const CustomerOrders = () => {
             <div className="order-items">
               {order.items.map((item, idx) => (
                 <div className="order-item" key={idx}>
-                  <img src={`http://localhost:5000/${item.image_url}`} alt={item.product_name} />
+                  <img src={`${process.env.REACT_APP_STATIC_URL}/${item.image_url}`} alt={item.product_name} />
                   <div>
                     <p><strong>{item.product_name}</strong></p>
                     <p>{item.quantity} × ₹{item.price}</p>

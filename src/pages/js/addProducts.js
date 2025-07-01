@@ -20,7 +20,7 @@ const AddProduct = () => {
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     axios
-      .get('http://localhost:5000/api/products/categories', {
+      .get(`${process.env.REACT_APP_API_URL}/products/categories`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setCategories(res.data))
@@ -49,7 +49,7 @@ const AddProduct = () => {
     if (formData.image) data.append('image', formData.image);
 
     try {
-      await axios.post('http://localhost:5000/api/products/add', data, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/products/add`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

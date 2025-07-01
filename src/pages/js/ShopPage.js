@@ -20,7 +20,7 @@ const ShopPage = () => {
   // ✅ Create or get active cart
   const getOrCreateCart = async () => {
     try {
-      const res = await axios.post(`http://localhost:5000/api/carts`, {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/carts`, {
         store_id: storeId,
         customer_id: customerId
       });
@@ -41,7 +41,7 @@ const ShopPage = () => {
   }
     try {
       const id = cartId || await getOrCreateCart();
-      await axios.post(`http://localhost:5000/api/cart-items`, {
+      await axios.post(`${process.env.REACT_APP_API_URL}/cart-items`, {
         cart_id: id,
         product_id: productId,
         quantity: 1
@@ -57,14 +57,14 @@ const ShopPage = () => {
     if (!storeId) return;
 
     // Fetch store name
-    axios.get(`http://localhost:5000/api/store/${storeId}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/store/${storeId}`)
       .then(response => {
         setStoreName(response.data.store.store_name);
       })
       .catch(error => console.error('Error fetching store:', error));
 
     // Fetch products
-    axios.get(`http://localhost:5000/api/store/${storeId}/products`)
+    axios.get(`${process.env.REACT_APP_API_URL}/store/${storeId}/products`)
       .then(response => {
         const { categories, products } = response.data;
         const normalizedProducts = products.map(p => ({
@@ -117,7 +117,7 @@ const ShopPage = () => {
       <div className="product-grid">
         {paginatedProducts.map(({ id, name, description, price, image_url }) => (
           <div key={id} className="product-card">
-            <img src={`http://localhost:5000/${image_url}`} alt={name} />
+            <img src={`${process.env.REACT_APP_STATIC_URL}/${image_url}`} alt={name} />
             <h4>{name}</h4>
             <p>{description}</p>
             <p>₹{price}</p>

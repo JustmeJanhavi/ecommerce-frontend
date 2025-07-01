@@ -25,14 +25,14 @@ export default function Stores() {
   // const [previewStorePhoto, setPreviewStorePhoto] = useState('');
   const [loading, setLoading] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
-  const storeLink = `http://localhost:3000/store/${storeId}`;
+  const storeLink = `${process.env.REACT_APP_STATIC_URL}/store/${storeId}`;
   
   const token = localStorage.getItem('authToken'); // ✅ assumes JWT is stored here
 
   // ✅ Load store data
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/adminstore', {
+      .get(`${process.env.REACT_APP_API_URL}/adminstore`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -91,7 +91,7 @@ export default function Stores() {
     if (storePhoto) payload.append('store_photo', storePhoto);
 
     try {
-      await axios.put('http://localhost:5000/api/adminstore', payload, {
+      await axios.put(`${process.env.REACT_APP_API_URL}/adminstore`, payload, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
