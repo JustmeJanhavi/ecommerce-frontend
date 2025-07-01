@@ -1,0 +1,233 @@
+/* ---- Container ---- */
+.stores-container {
+  max-width: 1100px;
+  margin: 1rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Inter', sans-serif;
+  color: #2d3748;
+  background: #e0f2fe;
+
+}
+
+.stores-container h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 600;
+  padding-top: 2rem;
+}
+
+/* ---- Form Layout ---- */
+.stores-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.stores-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ---- Inputs ---- */
+.stores-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.stores-form input,
+.stores-form textarea {
+  margin-top: 0.4rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.stores-form input:focus,
+.stores-form textarea:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.3);
+  outline: none;
+}
+
+/* ---- File Input ---- */
+.stores-form input[type="file"] {
+  padding: 0.4rem;
+  background-color: transparent;
+}
+
+/* ---- Textarea ---- */
+.stores-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ---- Button ---- */
+.stores-form button[type="submit"] {
+  margin-top: 1rem;
+  padding: 0.9rem 1.6rem;
+  background-color: #2b6cb0;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  align-self: flex-start;
+}
+
+.stores-form button[type="submit"]:hover {
+  background-color: #2c5282;
+}
+
+.stores-form button[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+.stores-form button[type="submit"]:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---- Mobile Responsiveness ---- */
+@media (max-width: 768px) {
+  .stores-form {
+    grid-template-columns: 1fr;
+  }
+
+  .stores-form button[type="submit"] {
+    width: 100%;
+    text-align: center;
+  }
+}
+.stores-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.icon-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.icon-buttons button {
+  background: white;
+  border: 2px solid #dcdcdc;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.icon-buttons button:hover {
+  border-color: #888;
+}
+
+.icon-buttons img {
+  width: 22px;
+  height: 22px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 2rem;
+  width: 450px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #eee;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.share-link-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.share-link-box input {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.copy-btn {
+  background: #003366;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  margin-left: 1rem;
+}
+
+.share-via {
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.share-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.share-icons a i {
+  font-size: 24px;
+  color: #333;
+  transition: transform 0.2s;
+}
+
+.share-icons a:hover i {
+  transform: scale(1.2);
+}

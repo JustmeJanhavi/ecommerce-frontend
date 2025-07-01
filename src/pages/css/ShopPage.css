@@ -1,0 +1,134 @@
+/* ShopPage.css */
+
+.shop-page {
+    /* padding: 2rem; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eae9e9;
+    min-height: 100vh;
+    padding:1.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .category-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem; /* tab-like spacing */
+    margin-bottom: 2rem;
+  }
+  
+  .tab-button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #444;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: font-weight 0.2s ease;
+  }
+  
+  /* .tab-button:hover {
+    text-decoration: underline;
+  } */
+  
+  .tab-button.active {
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* fixed 4 cards */
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .product-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 400px; /* taller card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .product-card h4 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.3rem;
+  }
+  
+  .product-card p {
+    font-size: 0.95rem;
+    color: #000000;
+    
+  }
+  
+  .add-to-cart-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #333;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  
+  .pagination button {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .pagination button.active-page {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  

@@ -1,0 +1,147 @@
+/* Background */
+.orders-page {
+  /* background: linear-gradient(to bottom, #f9f8d4, #fff); */
+  background-color: #eae9e9;
+
+  min-height: 100vh;
+  padding-top: 1rem;
+}
+
+/* Centered container */
+.orders-container-customer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Section title */
+.orders-container-customer h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #2f2f2f;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Order card */
+.order-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Order details */
+.order-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #444;
+}
+
+.order-card p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 4px 0;
+}
+
+/* Status badge */
+.order-card .status {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-top: 0.5rem;
+}
+
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status.delivered {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.cancelled {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Items */
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.order-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.order-item img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Item info */
+.order-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-item strong {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.order-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #000000;
+}
+
+/* Total */
+.order-total {
+  text-align: right;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #222;
+  border-top: 1px dashed #ccc;
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-total {
+    text-align: left;
+  }
+}
