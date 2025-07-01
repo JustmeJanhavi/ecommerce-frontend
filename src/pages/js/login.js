@@ -28,6 +28,7 @@ const Login = () => {
         password,
         rememberMe
       });
+      console.log("API:", process.env.REACT_APP_API_URL);
 
       const { token, user } = response.data;
 

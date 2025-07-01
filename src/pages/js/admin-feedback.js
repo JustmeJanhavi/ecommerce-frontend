@@ -13,8 +13,11 @@ const Feedback = () => {
     const fetchFeedback = async () => {
       try {
         const token = localStorage.getItem('authToken');
+        const storeId = localStorage.getItem('storeId');
+
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/feedback`, {
           headers: { Authorization: `Bearer ${token}` },
+          params: { storeId }
         });
         setFeedbacks(response.data);
         setLoading(false);

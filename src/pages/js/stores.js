@@ -31,11 +31,14 @@ export default function Stores() {
 
   // ✅ Load store data
   useEffect(() => {
+    const storeId = localStorage.getItem('storeId');
+
     axios
       .get(`${process.env.REACT_APP_API_URL}/adminstore`, {
         headers: {
           Authorization: `Bearer ${token}`,
-        },
+          
+        },params: { storeId }
       })
       .then(res => {
         const data = res.data.store;

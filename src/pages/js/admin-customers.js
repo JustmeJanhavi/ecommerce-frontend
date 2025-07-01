@@ -12,11 +12,15 @@ const Customers = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const storeId = localStorage.getItem('storeId');
+
     const fetchCustomers = async () => {
       try {
         const token = localStorage.getItem('authToken');
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/customers`, {
           headers: { Authorization: `Bearer ${token}` },
+          params: { storeId }
+
         });
         setCustomers(response.data);
         setLoading(false);

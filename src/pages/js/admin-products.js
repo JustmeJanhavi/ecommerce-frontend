@@ -24,16 +24,20 @@ const Products = () => {
   });
 
   const navigate = useNavigate();
+  const storeId = localStorage.getItem('storeId');
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
+
     if (!isFiltered) fetchProducts(token);
     fetchCategories(token);
   }, []);
 
   const fetchProducts = async (token) => {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/products`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
+      params: { storeId }
+
     });
     setProducts(res.data);
   };
@@ -49,6 +53,7 @@ const Products = () => {
         maxPrice: filters.maxPrice,
         minSold: filters.minSold,
         maxSold: filters.maxSold,
+        storeId
       };
 
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/products/filter`, {
@@ -65,7 +70,9 @@ const Products = () => {
 
   const fetchCategories = async (token) => {
     const res = await axios.get(`${process.env.REACT_APP_API_URL}/products/category-counts`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { Authorization: `Bearer ${token}` },
+      params: { storeId }
+
     });
 
     const data = res.data;

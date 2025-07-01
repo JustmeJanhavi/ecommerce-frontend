@@ -19,11 +19,15 @@ const AddCustomer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/customers/add`, {
+      const storeId = localStorage.getItem('storeId'); // Get it from localStorage
+
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/customers/add?storeId=${storeId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+          
+
         },
         body: JSON.stringify(customer)
       });

@@ -16,12 +16,17 @@ const AddProduct = () => {
     stock_quantity: '',
     image: null,
   });
+  const storeId = localStorage.getItem('storeId');
+
 
   useEffect(() => {
     const token = localStorage.getItem('authToken');
+
     axios
       .get(`${process.env.REACT_APP_API_URL}/products/categories`, {
         headers: { Authorization: `Bearer ${token}` },
+        params: { storeId }
+
       })
       .then((res) => setCategories(res.data))
       .catch((err) => console.error('Failed to fetch categories:', err));
@@ -53,7 +58,8 @@ const AddProduct = () => {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
-        },
+        },params: { storeId }
+
       });
       navigate('/AdminOverview', { state: { tab: 'Products' } });
 // 🔁 Back to Products Page
