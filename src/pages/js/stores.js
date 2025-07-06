@@ -25,7 +25,7 @@ export default function Stores() {
   // const [previewStorePhoto, setPreviewStorePhoto] = useState('');
   const [loading, setLoading] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
-  const storeLink = `${process.env.REACT_APP_STATIC_URL}/store/${storeId}`;
+  const storeLink = `https://ecommerce-frontend-henna-eight.vercel.app/store/${storeId}`;
   
   const token = localStorage.getItem('authToken'); // ✅ assumes JWT is stored here
 
